@@ -1,53 +1,54 @@
 <mat-card class="occupy" style="background-color: whitesmoke;">
-  <mat-card-header>
-    Add Task
-  </mat-card-header>
-  <mat-card-actions>
-    <button mat-button (click)="updateTask()">Save</button>
-    <button mat-button (click)="cancel()">Cancel</button>
-  </mat-card-actions>
-  <mat-divider></mat-divider>
-  <br>
-  <mat-card-content>
-    <form>
-      <div class="row" >
-      <div style="float: left;"><mat-form-field appearance="fill">
-        <mat-label>Select Project</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let project of projectTasks" [value]="project.value">
-            {{project.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div style="float: inherit;"><mat-form-field appearance="fill">
-      <mat-label>Status</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let status of statusList" [value]="status.value">
-          {{status.viewValue}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-    <div style="float: right;">
-      <mat-form-field appearance="fill">
-        <mat-label>Assigned To</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let user of assignedUsers" [value]="user.value">
-            {{user.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="FirstName">Project Details</label>
-          <input type="name" class="form-control" id="FirstName">
+  <form #updateTaskForm="ngForm" (ngSubmit)="onSubmit(updateTaskForm)">
+    <mat-card-header>
+      Update Task
+    </mat-card-header>
+    <mat-card-actions>
+      <button>Save</button>
+      <button mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-card-content>
+
+      <div class="row">
+        <div style="float: left;">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Project</mat-label>
+            <mat-select name="selectedProjectOption" [(ngModel)]="selectedProject">
+              <mat-option *ngFor="let project of projectList" [value]="project.id">
+                {{project.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div style="float: right;">
+          <mat-form-field appearance="fill">
+            <mat-label>Assigned To</mat-label>
+            <mat-select name="selectedUserOption" [(ngModel)]="selectedUser">
+              <mat-option *ngFor="let user of userList" [value]="user.id">
+                {{user.email}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div style="float: left;">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Status</mat-label>
+            <mat-select name="selectedStatusOption" [(ngModel)]="selectedStatus">
+              <mat-option *ngFor="let status of taskStatusList" [value]="status.statusId">
+                {{status.statusDescription}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
-
-    </form>
-
-  </mat-card-content>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="detail">Task Details</label>
+          <input name="detail" class="form-control" id="detail" [(ngModel)] ="detail">
+        </div>
+      </div>
+    </mat-card-content>
+  </form>
 </mat-card>

@@ -5,14 +5,13 @@ import { ShowProjectsComponent } from './components/show-projects/show-projects.
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 
 const routes: Routes = [
-  
-  {path: 'show', component: ShowProjectsComponent},
-  {path: 'create', component: CreateProjectComponent},
-  {path: 'update/:id', component: UpdateProjectComponent}
+  { path: 'show', component: ShowProjectsComponent },
+  { path: 'create', component: CreateProjectComponent },
+  { path: 'update/:id', component: UpdateProjectComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ProjectRoutingModule { }
+export class ProjectRoutingModule {}

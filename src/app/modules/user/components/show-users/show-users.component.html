@@ -12,37 +12,37 @@
     
     
     <mat-card-content>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="users" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
           
-            <!-- Position Column -->
+            <!-- UserId Column -->
             <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef> Id </th>
               <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
           
-            <!-- Name Column -->
+            <!-- FirstName Column -->
             <ng-container matColumnDef="firstName">
               <th mat-header-cell *matHeaderCellDef> First Name </th>
               <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
             </ng-container>
           
-            <!-- Weight Column -->
+            <!-- LastName Column -->
             <ng-container matColumnDef="lastName">
               <th mat-header-cell *matHeaderCellDef> Last Name </th>
               <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
             </ng-container>
           
-            <!-- Symbol Column -->
+            <!-- Email Column -->
             <ng-container matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef> Email </th>
               <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row (dblclick)="updateSelectedUserRows(row.id)" *matRowDef="let row; columns: displayedColumns;" ></tr>
+            <tr mat-row (dblclick)="updateSelectedUserRows(row)" *matRowDef="let row; columns: displayedColumns;" ></tr>
           </table>
       
     </mat-card-content>

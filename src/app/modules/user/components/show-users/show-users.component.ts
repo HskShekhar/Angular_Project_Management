@@ -1,52 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
-
-export interface PeriodicElement {
-  firstName: string;
-  id: number;
-  lastName: string;
-  email: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 1, firstName: 'Hydrogen', lastName: 'Hydrogen', email: 'H'},
-  {id: 2, firstName: 'Helium', lastName: 'Hydrogen', email: 'He'},
-  {id: 3, firstName: 'Lithium', lastName: 'Hydrogen', email: 'Li'},
-  {id: 4, firstName: 'Beryllium', lastName: 'Hydrogen', email: 'Be'},
-  {id: 5, firstName: 'Boron', lastName: 'Hydrogen', email: 'B'},
-  {id: 6, firstName: 'Carbon', lastName: 'Hydrogen', email: 'C'},
-  {id: 7, firstName: 'Nitrogen', lastName: 'Hydrogen', email: 'N'},
-  {id: 8, firstName: 'Oxygen', lastName: 'Hydrogen', email: 'O'},
-  {id: 9, firstName: 'Fluorine', lastName: 'Hydrogen', email: 'F'},
-  {id: 10, firstName: 'Neon', lastName: 'Hydrogen', email: 'Ne'},
-];
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/models/User.model';
+import { SharedDataService } from 'src/app/modules/shared/services/shared-data.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-show-users',
   templateUrl: './show-users.component.html',
-  styleUrls: ['./show-users.component.css']
+  styleUrls: ['./show-users.component.css'],
 })
-export class ShowUsersComponent implements OnInit {
+export class ShowUsersComponent implements OnInit{
+  users: User[] = [];
+  updateUserData = new User();
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private projectService: UserService,
+    private dataService: SharedDataService,
+    private changeDetectorRefs: ChangeDetectorRef
+  ) {}
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email'];
-  dataSource = ELEMENT_DATA;
-  clickedRows = new Set<PeriodicElement>();
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getAllUsers();
   }
 
-  addUser()
-  {
+  addUser() {
     this.router.navigate(['/home/user/create']);
   }
 
-  updateSelectedUserRows(position: any)
-  {
-    console.log(position);
-    this.router.navigate(['/home/user/update/'+position]);
-    
-
+  getAllUsers() {
+    this.projectService.getAllUserDetails().subscribe((data) => {
+      this.users = data;
+       this.dataService.sendUserListData(this.users);
+       this.changeDetectorRefs.detectChanges();
+    });
   }
 
+  updateSelectedUserRows(rowData: any) {
+    this.updateUserData.Id = rowData.id;
+    this.updateUserData.FirstName = rowData.firstName;
+    this.updateUserData.LastName = rowData.lastName;
+    this.updateUserData.Email = rowData.email;
+    this.dataService.sendUserData(this.updateUserData);
+    this.router.navigate(['/home/user/update/' + rowData.id]);
+  }
 }

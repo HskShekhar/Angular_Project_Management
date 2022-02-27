@@ -9,6 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     MatTableModule,
     MatCardModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   exports:[
     ShowUsersComponent,

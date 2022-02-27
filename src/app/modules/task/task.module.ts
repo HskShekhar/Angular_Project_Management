@@ -10,6 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatDividerModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ],
   exports:[
     ShowTasksComponent,

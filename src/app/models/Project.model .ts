@@ -1,17 +1,16 @@
 export class Project
 {
-   private  id: string;
-   private Name : string;
-   private Details: string;
-   private CreatedOn: string;
+   public Id: number;
+   public Name : string;
+   public Detail: string;
+   public CreatedOn: string;
 
 
-   constructor(id: string, Name: string, Details: string, CreatedOn:string)
-   {
-    this.id  =id ;
-    this.Name= Name;
-    this.Details= Details;
-    this.CreatedOn= CreatedOn;
-   
-   }
+   // constructor(id: string, Name: string, Detail: string, CreatedOn:Date)
+   // {
+   //  this.Id  = id ;
+   //  this.Name= Name;
+   //  this.Detail = Detail;
+   //  this.CreatedOn= CreatedOn;
+   // }
 }

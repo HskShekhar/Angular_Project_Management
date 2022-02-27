@@ -9,13 +9,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ShowProjectsComponent,
     CreateProjectComponent,
-    UpdateProjectComponent
+    UpdateProjectComponent,
   ],
   imports: [
     CommonModule,
@@ -23,12 +23,13 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatCardModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
   ],
-  exports:[
+  exports: [
     ShowProjectsComponent,
     UpdateProjectComponent,
-    CreateProjectComponent
-  ]
+    CreateProjectComponent,
+  ],
 })
-export class ProjectModule { }
+export class ProjectModule {}

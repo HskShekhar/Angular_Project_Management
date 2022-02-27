@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './modules/layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProjectService } from './modules/project/services/project.service';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './modules/user/services/user.service';
+import { TaskService } from './modules/task/services/task.service';
 
 @NgModule({
   declarations: [
@@ -12,11 +16,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     LayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [ProjectService,UserService,TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

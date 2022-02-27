@@ -1,32 +1,31 @@
 <mat-card class="occupy" style="background-color: whitesmoke;">
+  <form #updateUserForm="ngForm" (ngSubmit)="onSubmit(updateUserForm)">
     <mat-card-header>
       Update User
     </mat-card-header>
     <mat-card-actions>
-      <button mat-button (click)="updateUser()">Submit</button>
+      <button>Save</button>
       <button mat-button (click)="cancel()">Cancel</button>
     </mat-card-actions>
   <mat-divider></mat-divider>
   <br>
   <mat-card-content>
-        <form>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="FirstName">FirstName</label>
-              <input type="name" class="form-control" id="FirstName">
+              <label for="firstName">First Name</label>
+              <input name="firstName" type="name" class="form-control" id="firstName" [(ngModel)] = "user.FirstName">
             </div>
             <div class="form-group col-md-6">
-              <label for="LastName">LastName</label>
-              <input type="name" class="form-control" id="LastName">
+              <label for="lastName">Last Name</label>
+              <input name="lastName" type="name" class="form-control" id="lastName" [(ngModel)] = "user.LastName">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="Email">Email</label>
-              <input type="email" class="form-control" id="Email" placeholder="abc@xyz">
+              <label for="email">Email</label>
+              <input name="email" type="email" class="form-control" id="email" [(ngModel)] = "user.Email">
             </div>
           </div>
-
-        </form>
   </mat-card-content>
+</form>
 </mat-card>
